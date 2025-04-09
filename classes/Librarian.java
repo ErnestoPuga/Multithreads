@@ -85,7 +85,7 @@ public class Librarian {
         return null;
     }
 
-    public void checkOutBook(int patronId, String bookTitle) {
+    public synchronized void checkOutBook(int patronId, String bookTitle) {
         Patron patron = findPatronById(patronId);
         Book book = findBook(bookTitle);
 
@@ -104,7 +104,7 @@ public class Librarian {
         System.out.println(patron.getName() + " checked out " + book.getTitle());
     }
 
-    public void returnBook(int patronId, String bookTitle) {
+    public synchronized void returnBook(int patronId, String bookTitle) {
         Patron patron = findPatronById(patronId);
         if (patron == null) {
             System.out.println("Patron not found.");

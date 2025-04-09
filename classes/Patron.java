@@ -3,13 +3,14 @@ package Library.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Patron {
+public class Patron implements Runnable {
     private String name;
     private int id;
     private String contact; //email
     private List<Book> borrowedBooks; //List for borrowed books
+    private Library library; 
 
-    public Patron(String name, String contact, int id){
+    public Patron(String name, String contact, int id, Library library) {
         this.name = name;
         this.id = id;
         this.contact = contact;
@@ -26,7 +27,7 @@ public class Patron {
     public String getName() {
         return name;
     }
-    public List getBorrowedBooks(){
+    public List<Book>  getBorrowedBooks(){
         return borrowedBooks;
     }
 
