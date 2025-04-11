@@ -179,4 +179,22 @@ public class Librarian {
             }
         }
     }
+
+    @Override
+
+    public void run(){
+        try{
+            Book bookToBorrow = library.findBook("find some book title");
+            if (bookToBorrow != null) {
+                library.checkOutBook(this.id, bookToBorrow.getTitle());
+                Thread.sleep((int)(Math.random()*1000));
+                library.returnBook(this.id, bookToBorrow.getTitle());
+        }
+
+    } catch (InterruptedException e){
+        System.out.println("Thread interrupted: " + e.getMessage());
+    } catch (Exception e) {
+        System.out.println("An error occurred: " + e.getMessage());
+    }
+ } 
 }
